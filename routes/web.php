@@ -24,5 +24,6 @@ Route::middleware([IsUser::class])->group(function(){
     Route::middleware([HasSubscription::class])->group(function(){
         Route::get('/subscription/succcess', [MainController::class, 'subscriptionSuccess'])->name('subscription.succcess');
         Route::get('/dashboard', [MainController::class, 'dashboard'])->name('dashboard');
+        Route::get('/invoice/{id}', [MainController::class, 'invoiceDownload'])->name('invoice.download');
     });
 });

@@ -23,5 +23,18 @@
         <p class="display-6">Dashboard!</p>
     </div>
 
+    <hr>
+    <div class="text-center">
+        <p>Subscriptions ends at: <strong>{{ $subscription_end }}</strong></p>
+    </div>
+
+    <hr>
+    <p class="text-center">Your Invoices</p>
+    @foreach ($invoices as $invoice)
+        <div class="text-center">
+            <strong>{{ date('d/m/Y H:i:s', $invoice->created) }}</strong>:  <a href="{{ route('invoice.download', ['id' => $invoice->id]) }}" class="btn btn-primary">Download PDF</a>
+        </div>
+    @endforeach
+
 </body>
 </html>

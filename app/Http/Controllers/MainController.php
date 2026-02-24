@@ -67,6 +67,28 @@ class MainController extends Controller
 
     public function dashboard()
     {
-        return view('dashboard');
+        $data = [];
+
+        // check subscription expiration
+        $timestamp = auth()->user()->subscription(env('STRIPE_PRODUCT_ID'))
+                            ->asStripeSubscription()
+                            ->items->data[0]?->current_period_end;
+
+        $data['subscription_end'] = date('d/m/Y H:i:s', $timestamp);
+
+        // get invoices
+        $invoices = auth()->user()->invoices();
+        $data['invoices'] = $invoices;
+
+        return view('dashboard', $data);
+    }
+
+    public function invoiceDownload($id)
+    {
+        // return auth()->user()->downloadInvoice($id);
+        return auth()->user()->downloadInvoice($id, [
+            'vendor' => 'Maus Inc',
+            'product' => 'Laravel Cashier Monthly Plan'
+        ]);
     }
 }
