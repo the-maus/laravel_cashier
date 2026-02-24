@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsGuest
+class HasSubscription
 {
     /**
      * Handle an incoming request.
@@ -15,9 +15,10 @@ class IsGuest
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check()) // checks if anyone's logged in
+        if(!auth()->user()->subscribed(env('STRIPE_PRODUCT_ID')))
             return redirect()->route('plans');
 
+        // user will only access the page (ex.: dashboard) case it has a subscribtion
         return $next($request);
     }
 }
