@@ -15,7 +15,7 @@
         <hr>
         <div class="text-center">
             User: <strong class="text-info">{{ auth()->user()->name }}</strong>
-            <a  clas="bt btn-sm btn-danger px-3 ms-3"href="{{ route('logout') }}">Logout</a>
+            <a  class="btn btn-sm btn-danger px-3 ms-3"href="{{ route('logout') }}">Logout</a>
         </div>
         <hr>
     </div>
@@ -28,7 +28,7 @@
                     <h3>Monthly Plan</h1>
                     <hr>
                     <h1 class="text-center text-white">9.99$ / month</h4>
-                    <a href="#" class="btn btn-secondary mt-3 w-100">SUBSCRIBE</a>
+                    <a href="{{ route('plans.select' , ['id' => $prices['monthly']])}}" class="btn btn-secondary mt-3 w-100">SUBSCRIBE</a>
                 </div>
             </div>
             
@@ -37,7 +37,7 @@
                     <h3>Yearly Plan</h1>
                     <hr>
                     <h1 class="text-center text-white">49.99$ / year</h4>
-                    <a href="#" class="btn btn-success mt-3 w-100">SUBSCRIBE</a>
+                    <a href="{{ route('plans.select' , ['id' => $prices['yearly']])}}" class="btn btn-success mt-3 w-100">SUBSCRIBE</a>
                     <p class="text-center text-warning mt-3">Most Popular!</p>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                     <h3>3 Year Plan</h1>
                     <hr>
                     <h1 class="text-center text-white">119.99$</h4>
-                    <a href="#" class="btn btn-warning mt-3 w-100">SUBSCRIBE</a>
+                    <a href="{{ route('plans.select' , ['id' => $prices['three_year']])}}" class="btn btn-warning mt-3 w-100">SUBSCRIBE</a>
                 </div>
             </div>
             

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\View\View;
 
 class MainController extends Controller
@@ -31,6 +32,36 @@ class MainController extends Controller
 
     public function plans(): View
     {
-        return view('plans');
+        $prices = [
+            'monthly' => Crypt::encryptString(env('STRIPE_PRODUCT_ID') . "|" . env('STRIPE_MONTHLY_PRICE_ID')),
+            'yearly' => Crypt::encryptString(env('STRIPE_PRODUCT_ID') . "|" . env('STRIPE_YEARLY_PRICE_ID')),
+            'three_year' => Crypt::encryptString(env('STRIPE_PRODUCT_ID') . "|" . env('STRIPE_THREE_YEAR_PRICE_ID')),
+        ];
+
+        return view('plans', compact('prices'));
+    }
+
+    public function selectPlan($id)
+    {
+        // check if id is valid
+        $plan = Crypt::decryptString($id);
+        if(!$plan)
+            return redirect()->route('plans');
+
+        $plan= explode('|', $plan);
+        $productId = $plan[0];
+        $priceId = $plan[1];
+
+        return auth()->user()
+            ->newSubscription($productId, $priceId)
+            ->checkout([
+                'success_url' => route('subscription.succcess'),
+                'cancel_url' => route('plans'),
+            ]);
+    }
+
+    public function subscriptionSuccess()
+    {
+        echo 'Subscribed successfully';
     }
 }
