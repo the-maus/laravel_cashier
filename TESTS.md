@@ -1,5 +1,5 @@
 > [!NOTE]
->Your [Stripe](https://dashboard.stripe.com/) service and recurring prices must be set on .env file with the variables below and your local client must be running if your in sandbox.
+>Your [Stripe](https://dashboard.stripe.com/) service and recurring prices must be set on `.env` file with the variables below and your local client must be running if your in sandbox.
 
 ```
 STRIPE_PRODUCT_ID
