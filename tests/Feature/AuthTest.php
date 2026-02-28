@@ -14,6 +14,12 @@ it('tests if non-logged user can access Login page', function() {
     expect($this->get('/login')->content())->toContain("Login user 1");
 });
 
+it('tests if Logged user can\'t access login page (redirect to plans)', function() {
+    $response = $this->actingAs(User::find(1))->get('/login')->assertRedirect('/plans');
+
+    expect($response->status())->toBe(302);
+});
+
 it('tests if non-logged user can login', function() {
     $response = $this->get('/login/1');
 
@@ -29,10 +35,14 @@ it('tests if non-logged user can login', function() {
     ]);
 });
 
-
 it('tests if non-logged user can\'t logout', function() {
     $response = $this->get('/logout')->assertRedirect('/login');
 
     expect($response->status())->toBe(302);
 });
 
+it('tests if logged user (non-subscribed) can logout (redirects to login also)', function() {
+    $response = $this->actingAs(User::find(1))->get('/logout')->assertRedirect('/login');
+
+    expect($response->status())->toBe(302);
+});

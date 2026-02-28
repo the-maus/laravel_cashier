@@ -20,14 +20,14 @@ STRIPE_THREE_YEAR_PRICE_ID
 - [x] Non-logged user can't download invoice
 - [x] Non-logged user can't logout
 ***
-- [ ] Logged (non-subscribed) user must be redirected to Plans page when accessing default route
-- [ ] Logged (non-subscribed) user can access Plans page
-- [ ] Logged (non-subscribed) user can subscribe to plan
-- [ ] Logged (non-subscribed) user can't access Subscription Success page
-- [ ] Logged (non-subscribed) user can't access Dashboard
-- [ ] Logged (non-subscribed) user can't download invoice
-- [ ] Logged user can't access login page
-- [ ] Logged user can logout
+- [x] Logged (non-subscribed) user must be redirected to Plans page when accessing default route
+- [x] Logged (non-subscribed) user can access Plans page
+- [x] Logged (non-subscribed) user can subscribe to plan
+- [x] Logged (non-subscribed) user can't access Subscription Success page (redirect to plans)
+- [x] Logged (non-subscribed) user can't access Dashboard (redirect to plans)
+- [x] Logged (non-subscribed) user can't download invoice (redirect to plans)
+- [x] Logged user can't access login page (redirect to plans)
+- [x] Logged user can logout
 ***
 - [ ] Subscribed user must be redirected to Dashboard page when accessing default route
 - [ ] Subscribed user can access Subscription Success page

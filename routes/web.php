@@ -13,7 +13,7 @@ Route::middleware([IsGuest::class])->group(function(){
 });
 
 Route::middleware([IsUser::class])->group(function(){
-    Route::redirect('/', '/login');
+    Route::redirect('/', '/plans');
     Route::get('/logout', [MainController::class, 'logout'])->name('logout');
     
     Route::middleware([NoSubscription::class])->group(function(){
