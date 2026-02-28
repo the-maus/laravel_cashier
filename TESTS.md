@@ -1,5 +1,5 @@
 > [!NOTE]
->Your [Stripe](https://dashboard.stripe.com/) service and recurring prices must be set on `.env` file with the variables below and your local client must be running if your in sandbox.
+>Your [Stripe](https://dashboard.stripe.com/) service and recurring prices must be set on `.env` file with the variables below and your local client must be running if you are in sandbox.
 
 ```
 STRIPE_PRODUCT_ID
@@ -13,12 +13,12 @@ STRIPE_THREE_YEAR_PRICE_ID
 - [x] Non-logged user must be redirected to Login page when accessing default route
 - [x] Non-logged user can access Login Page
 - [x] Non-logged user can login (redirect to Plans or Dashboard Page)
-- [ ] Non-logged user can't access Plans page
-- [ ] Non-logged user can't subscribe to plan
-- [ ] Non-logged user can't access Subscription Success page
-- [ ] Non-logged user can't access Dahsboard
-- [ ] Non-logged user can't download invoice
-- [ ] Non-logged user can't logout
+- [x] Non-logged user can't access Plans page
+- [x] Non-logged user can't subscribe to plan
+- [x] Non-logged user can't access Subscription Success page
+- [x] Non-logged user can't access Dahsboard
+- [x] Non-logged user can't download invoice
+- [x] Non-logged user can't logout
 ***
 - [ ] Logged (non-subscribed) user must be redirected to Plans page when accessing default route
 - [ ] Logged (non-subscribed) user can access Plans page

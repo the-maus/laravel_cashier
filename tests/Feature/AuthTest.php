@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 it('tests if non-logged user is redirected to Login page when accessing default route', function() {
     $response = $this->get('/')->assertRedirect('/login');
 
@@ -26,3 +28,11 @@ it('tests if non-logged user can login', function() {
         url('/dashboard'),
     ]);
 });
+
+
+it('tests if non-logged user can\'t logout', function() {
+    $response = $this->get('/logout')->assertRedirect('/login');
+
+    expect($response->status())->toBe(302);
+});
+
